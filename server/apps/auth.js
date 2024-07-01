@@ -1,4 +1,7 @@
 import { Router } from "express";
+import { db } from "../utils/db.js";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const authRouter = Router();
 
