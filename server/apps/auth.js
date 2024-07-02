@@ -11,11 +11,13 @@ authRouter.post("/register", async (req, res) => {
   const user = {
     username: req.body.username,
     password: req.body.password,
-    firstName: req.body.firstname,
-    lastName: req.body.lastname,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
   };
+
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
+
   const collection = db.collection("users");
   await collection.insertOne(user);
 
