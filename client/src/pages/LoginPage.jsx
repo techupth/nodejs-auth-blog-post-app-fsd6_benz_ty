@@ -1,6 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/authentication";
 
 function LoginPage() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -8,6 +13,8 @@ function LoginPage() {
     event.preventDefault();
     // 🐨 Todo: Exercise #4
     //  นำ Function `login` ใน AuthContext มา Execute ใน Event Handler ตรงนี้
+    const data = { username, password };
+    login(data);
   };
 
   return (
